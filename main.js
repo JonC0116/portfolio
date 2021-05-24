@@ -20,7 +20,16 @@ navbarMenu.addEventListener('click', (event) => {
     return;
   }
 
-  console.log(event.target.dataset.link);
-  const scrollTo = document.querySelector(link);
-  scrollTo.scrollIntoView({behavior: 'smooth'});
+  scrollIntoView(link);
 });
+
+// Handle jumping to the Contact Me section when clicking the 'contact me' button
+const contactMeBtn = document.querySelector('.home__contact');
+contactMeBtn.addEventListener('click', () => {
+  scrollIntoView('#contact');
+});
+
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({behavior: 'smooth'});
+}
