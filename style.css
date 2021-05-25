@@ -344,6 +344,7 @@ p {
   right: 16px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
+  transform: translateY(25%);
 }
 
 .work__projects {
