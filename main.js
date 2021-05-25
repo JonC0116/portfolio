@@ -23,6 +23,7 @@ navbarMenu.addEventListener('click', (event) => {
   scrollIntoView(link);
 });
 
+
 // Handle jumping to the Contact Me section when clicking the 'contact me' button
 const contactMeBtn = document.querySelector('.home__contact');
 contactMeBtn.addEventListener('click', () => {
@@ -35,6 +36,7 @@ const homeHeight = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
   home.style.opacity = 1 - window.scrollY / homeHeight;
 });
+
 
 // Show "arrow-up" button when scrolling down
 const arrowUp = document.querySelector('.arrow-up');
@@ -52,7 +54,28 @@ arrowUp.addEventListener('click', () => {
 })
 
 
+// Projects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workBtnContainer.addEventListener('click', (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
+  projectContainer.classList.add('anim-out');
 
+  setTimeout(() => {
+    projects.forEach((project) => {
+      if (filter === '*' || filter === project.dataset.type) {
+        project.classList.remove('invisible');
+      } else {
+        project.classList.add('invisible');
+      }
+    });
+    projectContainer.classList.remove('anim-out');
+  }, 300);
+});
 
 
 
