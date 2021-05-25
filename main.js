@@ -19,7 +19,7 @@ navbarMenu.addEventListener('click', (event) => {
   if (link == null) {
     return;
   }
-
+  
   scrollIntoView(link);
 });
 
@@ -29,7 +29,22 @@ contactMeBtn.addEventListener('click', () => {
   scrollIntoView('#contact');
 });
 
+// Make home slowly fade to transparent as the window scrolls down
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+  home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+
+
+
+
+
+
+
+
 function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({behavior: 'smooth'});
 }
+
